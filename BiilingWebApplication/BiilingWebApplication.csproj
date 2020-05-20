@@ -44,6 +44,34 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.AI.Agent.Intercept, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.1.2.1\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.DependencyCollector, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.0.0\lib\net45\Microsoft.AI.DependencyCollector.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.PerfCounterCollector, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.0.0\lib\net45\Microsoft.AI.PerfCounterCollector.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.ServerTelemetryChannel, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.0.0\lib\net45\Microsoft.AI.ServerTelemetryChannel.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.Web, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Web.2.0.0\lib\net45\Microsoft.AI.Web.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.WindowsServer, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.2.0.0\lib\net45\Microsoft.AI.WindowsServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationInsights, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.2.0.0\lib\net45\Microsoft.ApplicationInsights.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
       <Private>True</Private>
@@ -167,6 +195,9 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Areas\Sales\Controllers\CounterSalesController.cs" />
+    <Compile Include="Areas\Sales\Models\CounterSalesModel.cs" />
+    <Compile Include="Areas\Sales\SalesAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -180,14 +211,112 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\css\additional_Triveni.css" />
+    <Content Include="Assets\css\additional_Version1.css" />
+    <Content Include="Assets\css\additional_Version2.css" />
+    <Content Include="Assets\css\additional_Version3.css" />
+    <Content Include="Assets\css\chartist-plugin-tooltip.css" />
+    <Content Include="Assets\css\chartist.min.css" />
+    <Content Include="Assets\css\custom.css" />
+    <Content Include="Assets\css\dropify.css" />
+    <Content Include="Assets\css\fonts\dropify.svg" />
+    <Content Include="Assets\css\fonts\fontawesome-webfont.svg" />
+    <Content Include="Assets\css\fonts\weathericons-regular-webfont.svg" />
+    <Content Include="Assets\css\fullcalendar.css" />
+    <Content Include="Assets\css\icons.png" />
+    <Content Include="Assets\css\main.css" />
+    <Content Include="Assets\css\metricsgraphics.css" />
+    <Content Include="Assets\css\style_switcher.min.css" />
+    <Content Include="Assets\css\themes_combined.min.css" />
+    <Content Include="Assets\css\theme_Triveni.css" />
+    <Content Include="Assets\css\theme_Version1.css" />
+    <Content Include="Assets\css\theme_Version2.css" />
+    <Content Include="Assets\css\theme_Version21.css" />
+    <Content Include="Assets\css\theme_Version3.css" />
+    <Content Include="Assets\css\ui.fancytree.min.css" />
+    <Content Include="Assets\css\uikit\uikit.almost-flat.css" />
+    <Content Include="Assets\css\uikit\uikit.almost-flat.min.css" />
+    <Content Include="Assets\css\weather-icons.min.css" />
+    <Content Include="Assets\scripts\altair_admin_common.js" />
+    <Content Include="Assets\scripts\altair_admin_common.min.js" />
+    <Content Include="Assets\scripts\app.js" />
+    <Content Include="Assets\scripts\common.js" />
+    <Content Include="Assets\scripts\common.min.js" />
+    <Content Include="Assets\scripts\Config.js" />
+    <Content Include="Assets\scripts\plugins\chartist-plugin-tooltip.js" />
+    <Content Include="Assets\scripts\plugins\chartist.js" />
+    <Content Include="Assets\scripts\plugins\chartist.min.js" />
+    <Content Include="Assets\scripts\plugins\clndr.js" />
+    <Content Include="Assets\scripts\plugins\clndr.min.js" />
+    <Content Include="Assets\scripts\plugins\countUp.min.js" />
+    <Content Include="Assets\scripts\plugins\d3.min.js" />
+    <Content Include="Assets\scripts\plugins\datatables\dataTables.bootstrap.js" />
+    <Content Include="Assets\scripts\plugins\datatables\dataTables.bootstrap.min.js" />
+    <Content Include="Assets\scripts\plugins\datatables\dataTables.bootstrap4.js" />
+    <Content Include="Assets\scripts\plugins\datatables\dataTables.bootstrap4.min.js" />
+    <Content Include="Assets\scripts\plugins\datatables\dataTables.foundation.js" />
+    <Content Include="Assets\scripts\plugins\datatables\dataTables.foundation.min.js" />
+    <Content Include="Assets\scripts\plugins\datatables\dataTables.jqueryui.js" />
+    <Content Include="Assets\scripts\plugins\datatables\dataTables.jqueryui.min.js" />
+    <Content Include="Assets\scripts\plugins\datatables\dataTables.material.js" />
+    <Content Include="Assets\scripts\plugins\datatables\dataTables.material.min.js" />
+    <Content Include="Assets\scripts\plugins\datatables\dataTables.semanticui.js" />
+    <Content Include="Assets\scripts\plugins\datatables\dataTables.semanticui.min.js" />
+    <Content Include="Assets\scripts\plugins\datatables\dataTables.uikit.js" />
+    <Content Include="Assets\scripts\plugins\datatables\dataTables.uikit.min.js" />
+    <Content Include="Assets\scripts\plugins\datatables\jquery.dataTables.js" />
+    <Content Include="Assets\scripts\plugins\datatables\jquery.dataTables.min.js" />
+    <Content Include="Assets\scripts\plugins\datatables\jquery.js" />
+    <Content Include="Assets\scripts\plugins\dropify.min.js" />
+    <Content Include="Assets\scripts\plugins\fullcalendar.js" />
+    <Content Include="Assets\scripts\plugins\handlebars.min.js" />
+    <Content Include="Assets\scripts\plugins\handlebars_helpers.min.js" />
+    <Content Include="Assets\scripts\plugins\jquery-ui.min.js" />
+    <Content Include="Assets\scripts\plugins\jquery.easypiechart.min.js" />
+    <Content Include="Assets\scripts\plugins\jquery.fancytree-all.min.js" />
+    <Content Include="Assets\scripts\plugins\jquery.inputmask.bundle.js" />
+    <Content Include="Assets\scripts\plugins\jquery.inputmask.bundle.min.js" />
+    <Content Include="Assets\scripts\plugins\jquery.min.js" />
+    <Content Include="Assets\scripts\plugins\jquery.peity.min.js" />
+    <Content Include="Assets\scripts\plugins\metricsgraphics.js" />
+    <Content Include="Assets\scripts\plugins\metricsgraphics.min.js" />
+    <Content Include="Assets\scripts\plugins\uikit_htmleditor_custom.js" />
+    <Content Include="Assets\scripts\plugins\uikit_htmleditor_custom.min.js" />
+    <Content Include="Assets\scripts\print.js" />
+    <Content Include="Assets\scripts\uikit_custom.js" />
+    <Content Include="Assets\scripts\uikit_custom.min.js" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Scripts\ai.0.22.9-build00167.js" />
+    <Content Include="Scripts\ai.0.22.9-build00167.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="ApplicationInsights.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Areas\Sales\Views\web.config" />
+    <Content Include="Assets\css\chartist-plugin-tooltip.css.map" />
+    <Content Include="Assets\css\fonts\dropify.eot" />
+    <Content Include="Assets\css\fonts\dropify.ttf" />
+    <Content Include="Assets\css\fonts\dropify.woff" />
+    <Content Include="Assets\css\fonts\fontawesome-webfont.eot" />
+    <Content Include="Assets\css\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Assets\css\fonts\fontawesome-webfont.woff" />
+    <Content Include="Assets\css\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Assets\css\fonts\vaidyaratnam.woff" />
+    <Content Include="Assets\css\fonts\weathericons-regular-webfont.eot" />
+    <Content Include="Assets\css\fonts\weathericons-regular-webfont.ttf" />
+    <Content Include="Assets\css\fonts\weathericons-regular-webfont.woff" />
+    <Content Include="Assets\css\fonts\weathericons-regular-webfont.woff2" />
+    <Content Include="Areas\Sales\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Sales\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Sales\Views\CounterSales\Index.cshtml" />
+    <Content Include="Areas\Sales\Views\CounterSales\Create.cshtml" />
+    <Content Include="Areas\Sales\Views\CounterSales\Form.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -237,6 +366,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Assets\scripts\pages\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
