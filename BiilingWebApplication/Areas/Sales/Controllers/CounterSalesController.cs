@@ -12,6 +12,7 @@ namespace BiilingWebApplication.Areas.Sales.Controllers
         // GET: Sales/CounterSales
         public ActionResult Index()
         {
+            
             return View();
         }
         public ActionResult Create()
